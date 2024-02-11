@@ -7,6 +7,7 @@ const ucsbDiningCommondMenuItemFixtures = {
         "name": "Burgers"      ,
         "station": "Grill"
       }
+
     ],
 
     threeMenu:
@@ -35,4 +36,4 @@ const ucsbDiningCommondMenuItemFixtures = {
     ]
 };
 
-export { restaurantFixtures };
+export { ucsbDiningCommondMenuItemFixtures };
