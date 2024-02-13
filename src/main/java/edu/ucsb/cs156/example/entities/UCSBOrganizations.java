@@ -1,4 +1,4 @@
-package main.java.edu.ucsb.cs156.example.entities;
+package edu.ucsb.cs156.example.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

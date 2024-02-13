@@ -1,4 +1,4 @@
-package main.java.edu.ucsb.cs156.example.controllers;
+package edu.ucsb.cs156.example.controllers;
 
 
 import edu.ucsb.cs156.example.entities.UCSBOrganizations;
