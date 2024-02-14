@@ -1,8 +1,7 @@
 import { Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom';
-
-function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+import { useNavigate } from 'react-router-dom'
+function UCSBDiningCommonsMenuItemForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
     
     // Stryker disable all
@@ -17,7 +16,7 @@ function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLa
    
     const navigate = useNavigate();
 
-    const testIdPrefix = "UCSBDIningCommonsMenuItemForm";
+    const testIdPrefix = "UCSBDiningCommonsMenuItemForm";
 
     return (
         <Form onSubmit={handleSubmit(submitAction)}>
@@ -36,8 +35,9 @@ function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLa
                 </Form.Group>
             )}
 
+
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="diningCommonsCode">DiningCommonsCode</Form.Label>
+                <Form.Label htmlFor="diningCommonsCode">Dining Commons Code</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-diningCommonsCode"}
                     id="diningCommonsCode"
@@ -52,10 +52,14 @@ function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLa
                 </Form.Control.Feedback>
             </Form.Group>
 
+
             <Form.Group className="mb-3" >
                 <Form.Label htmlFor="name">Name</Form.Label>
                 <Form.Control
                     data-testid={testIdPrefix + "-name"}
+                    id="name"
+                    type="text"
+                    isInvalid={Boolean(errors.name)}
                     {...register("name", {
                         required: "Name is required.",
                         maxLength : {
@@ -75,9 +79,9 @@ function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLa
                     data-testid={testIdPrefix + "-station"}
                     id="station"
                     type="text"
-                    isInvalid={Boolean(errors.name)}
+                    isInvalid={Boolean(errors.station)}
                     {...register("station", {
-                        required: "station is required."
+                        required: "Station is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -105,4 +109,4 @@ function ucsbDiningCommondMenuItemForm({ initialContents, submitAction, buttonLa
     )
 }
 
-export default ucsbDiningCommondMenuItemForm;
+export default UCSBDiningCommonsMenuItemForm;
