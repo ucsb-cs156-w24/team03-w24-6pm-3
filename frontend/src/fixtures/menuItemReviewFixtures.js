@@ -32,4 +32,4 @@ const menuItemReviewFixtures = {
 };
 
 
-export { ucsbmenuItemReviewFixtures };
+export { menuItemReviewFixtures };
