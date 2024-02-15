@@ -15,6 +15,9 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
+import UCSBDiningCommansMenuItemIndexPage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemIndexPage";
+import UCSBDiningCommansMenuItemCreatePage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemCreatePage";
+import UCSBDiningCommansMenuItemEditPage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -43,6 +46,21 @@ function App() {
             <>
               <Route exact path="/ucsbdates/edit/:id" element={<UCSBDatesEditPage />} />
               <Route exact path="/ucsbdates/create" element={<UCSBDatesCreatePage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/ucsbdiningcommonsmenuitem" element={<UCSBDiningCommansMenuItemEditPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommansMenuItemEditPage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDatesCreatePage />} />
             </>
           )
         }
