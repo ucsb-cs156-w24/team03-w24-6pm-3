@@ -1,44 +1,36 @@
 import React from 'react';
-import UCSBOrganizationsTable from "main/components/UCSBOrganizations/UCSBOrganizationsTable";
+import UCSBOrganizationsForm from "main/components/UCSBOrganizations/UCSBOrganizationsForm"
 import { ucsbOrganizationsFixtures } from 'fixtures/ucsbOrganizationsFixtures';
-import { currentUserFixtures } from 'fixtures/currentUserFixtures';
-import { rest } from "msw";
 
 export default {
-    title: 'components/UCSBOrganizations/UCSBOrganizationsTable',
-    component: UCSBOrganizationsTable
+    title: 'components/UCSBOrganizations/UCSBOrganizationsForm',
+    component: UCSBOrganizationsForm
 };
+
 
 const Template = (args) => {
     return (
-        <UCSBOrganizationsTable {...args} />
+        <UCSBOrganizationsForm {...args} />
     )
 };
 
-export const Empty = Template.bind({});
+export const Create = Template.bind({});
 
-Empty.args = {
-    organizations: []
+Create.args = {
+    buttonLabel: "Create",
+    submitAction: (data) => {
+        console.log("Submit was clicked with data: ", data); 
+        window.alert("Submit was clicked with data: " + JSON.stringify(data));
+   }
 };
 
-export const ThreeItemsOrdinaryUser = Template.bind({});
+export const Update = Template.bind({});
 
-ThreeItemsOrdinaryUser.args = {
-    organizations: ucsbOrganizationsFixtures.threeOrganizations,
-    currentUser: currentUserFixtures.userOnly,
-};
-
-export const ThreeItemsAdminUser = Template.bind({});
-ThreeItemsAdminUser.args = {
-    organizations: ucsbOrganizationsFixtures.threeOrganizations,
-    currentUser: currentUserFixtures.adminUser,
-}
-
-ThreeItemsAdminUser.parameters = {
-    msw: [
-        rest.delete('/api/ucsborganization', (req, res, ctx) => {
-            window.alert("DELETE: " + JSON.stringify(req.url));
-            return res(ctx.status(200),ctx.json({}));
-        }),
-    ]
+Update.args = {
+    initialContents: ucsbOrganizationsFixtures.oneOrganization,
+    buttonLabel: "Update",
+    submitAction: (data) => {
+        console.log("Submit was clicked with data: ", data); 
+        window.alert("Submit was clicked with data: " + JSON.stringify(data));
+   }
 };
