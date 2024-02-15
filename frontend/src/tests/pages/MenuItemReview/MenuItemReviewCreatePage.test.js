@@ -98,7 +98,7 @@ describe("MenuItemReviewCreatePage tests", () => {
 
         expect(axiosMock.history.post[0].params).toEqual(
             {
-            "itemId": "17",
+            "itemId": "1",
             "reviewerEmail": "test@test.com",
             "stars": "5",
             "comments": "great!",
