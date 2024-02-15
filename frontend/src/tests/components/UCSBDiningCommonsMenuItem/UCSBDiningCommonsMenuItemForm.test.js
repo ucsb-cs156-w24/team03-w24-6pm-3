@@ -1,6 +1,6 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm";
-import { ucsbDiningCommondMenuItemFixtures, ucsbDiningCommonsMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
+import { ucsbDiningCommondMenuItemFixtures } from "fixtures/ucsbDiningCommonsMenuItemFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
 
@@ -16,7 +16,7 @@ jest.mock('react-router-dom', () => ({
 describe("UCSBDiningCommonsMenuItemForm tests", () => {
     const queryClient = new QueryClient();
 
-    const expectedHeaders = ["diningCommonsCode", "Name", "Station"];
+    // const expectedHeaders = ["diningCommonsCode", "Name", "Station"];
     const testId = "UCSBDiningCommonsMenuItemForm";
 
     test("renders correctly with no initialCommits", async () => {
