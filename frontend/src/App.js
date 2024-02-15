@@ -15,9 +15,9 @@ import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
 
-import UCSBDiningCommansMenuItemIndexPage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemIndexPage";
-import UCSBDiningCommansMenuItemCreatePage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemCreatePage";
-import UCSBDiningCommansMenuItemEditPage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemEditPage";
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -52,15 +52,15 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/ucsbdiningcommonsmenuitem" element={<UCSBDiningCommansMenuItemEditPage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitem" element={<UCSBDiningCommonsMenuItemIndexPage />} />
             </>
           )
         }
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommansMenuItemEditPage />} />
-              <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDatesCreatePage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommonsMenuItemEditPage />} />
+              <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
             </>
           )
         }

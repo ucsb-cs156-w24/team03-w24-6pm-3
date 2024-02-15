@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import UCSBDiningCommansMenuItemEditPage from "main/pages/UCSBDiningCommansMenuItem/UCSBDiningCommansMenuItemEditPage";
+import UCSBDiningCommansMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
