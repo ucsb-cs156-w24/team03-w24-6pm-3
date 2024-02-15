@@ -78,9 +78,9 @@ describe("MenuItemReviewCreatePage tests", () => {
         const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
         const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
         const starsField = screen.getByTestId("MenuItemReviewForm-stars");
-        const commentsField = screen.getByTestId("MenuItemReview-comments");
-        const dateReviewedField = screen.getByTestId("MenuItemReview-dateReviewed");
-        const submitButton = screen.getByTestId("MenuItemReview-submit");
+        const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
+        const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
+        const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
         fireEvent.change(itemIdField, { target: { value: '17' } });
         fireEvent.change(reviewerEmailField, { target: { value: 'test@test.com' } });
