@@ -77,7 +77,7 @@ describe("MenuItemReviewForm tests", () => {
         fireEvent.change(starsField, { target: { value: 6 } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Stars needs to be in between 0 and 5./);
+        await screen.findByText(/Stars need to be in range 0 - 5/);
     });
 
     test("Correct Error messsages on missing input", async () => {
