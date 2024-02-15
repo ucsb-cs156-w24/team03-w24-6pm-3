@@ -1,39 +1,35 @@
-const ucsbDiningCommondMenuItemFixtures = {
+const ucsbDiningCommonsMenuItemFixtures = {
     oneMenu:
     [
-      {
-       "id": 1,
-        "diningCommonsCode": "Ortega",
-        "name": "Burgers"      ,
-        "station": "Grill"
-      }
-
+        {
+            "id": 1,
+            "diningCommonsCode": "Carrillo",
+            "name": "Cheese Pizza",
+            "station": "Pizza"
+        }
     ],
 
     threeMenu:
     [
         {
             "id": 2,
-            "diningCommonsCode": "Ortega",
-            "name": "Chips"      ,
-            "station": "Grill"      
+            "diningCommonsCode": "DLG",
+            "name": "Pepperoni Pizza",
+            "station": "Pizza"
         },
-
         {
-            "id": 1,
-            "diningCommonsCode": "Portola",
-            "name": "Pizza"      ,
-            "station": "Cafe"
+            "id": 3,
+            "diningCommonsCode": "Carrillo",
+            "name": "Lo Mein",
+            "station": "Wok"
         },
-
         {
             "id": 4,
-             "diningCommonsCode": "DLG",
-             "name": "Tacos",
-             "station": "Cafe"     
+            "diningCommonsCode": "Ortega",
+            "name": "Caesar Salad",
+            "station": "Salad"
         },
-        
     ]
 };
 
-export { ucsbDiningCommondMenuItemFixtures };
+export { ucsbDiningCommonsMenuItemFixtures };
