@@ -50,7 +50,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.requesterEmail)}
                    {...register("requesterEmail", {
-                       required: "Requester email is required."
+                       required: "RequesterEmail is required."
                    })}
                />
                <Form.Control.Feedback type="invalid">
@@ -65,13 +65,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    data-testid={testIdPrefix + "-professorEmail"}
                    id="professorEmail"
                    type="text"
-                   isInvalid={Boolean(errors.profesorEmail)}
+                   isInvalid={Boolean(errors.professorEmail)}
                    {...register("professorEmail", {
-                       required: "Professor email is required."
+                       required: "ProfessorEmail is required."
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.profesorEmail?.message}
+                   {errors.professorEmail?.message}
                </Form.Control.Feedback>
            </Form.Group>
 
@@ -88,13 +88,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.explanantion?.message}
+                   {errors.explanation?.message}
                </Form.Control.Feedback>
            </Form.Group>
 
 
            <Form.Group className="mb-3" >
-               <Form.Label htmlFor="dateRequested">Date (iso format)</Form.Label>
+               <Form.Label htmlFor="dateRequested">Date Requested (iso format)</Form.Label>
                <Form.Control
                    data-testid={testIdPrefix + "-dateRequested"}
                    id="dateRequested"
@@ -103,13 +103,13 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    {...register("dateRequested", { required: true, pattern: isodate_regex })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.dateRequested && 'dateRequested is required. '}
+                   {errors.dateRequested && 'DateRequested is required. '}
                </Form.Control.Feedback>
            </Form.Group>
 
 
            <Form.Group className="mb-3" >
-               <Form.Label htmlFor="dateNeeded">Date (iso format)</Form.Label>
+               <Form.Label htmlFor="dateNeeded">Date Needed (iso format)</Form.Label>
                <Form.Control
                    data-testid={testIdPrefix + "-dateNeeded"}
                    id="dateNeeded"
@@ -118,7 +118,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    {...register("dateNeeded", { required: true, pattern: isodate_regex })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.dateNeeded && 'dateNeeded is required. '}
+                   {errors.dateNeeded && 'DateNeeded is required. '}
                </Form.Control.Feedback>
            </Form.Group>
 
