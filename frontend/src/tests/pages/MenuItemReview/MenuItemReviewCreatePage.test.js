@@ -54,7 +54,8 @@ describe("MenuItemReviewCreatePage tests", () => {
 
         const queryClient = new QueryClient();
         const menuItemReview = {
-            itemId: 17,
+            id: 17,
+            itemId: 1,
             reviewerEmail: "test@test.com",
             stars: 5,
             comments: "great!",
@@ -82,9 +83,9 @@ describe("MenuItemReviewCreatePage tests", () => {
         const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
         const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
-        fireEvent.change(itemIdField, { target: { value: "17" } });
+        fireEvent.change(itemIdField, { target: { value: 1 } });
         fireEvent.change(reviewerEmailField, { target: { value: 'test@test.com' } });
-        fireEvent.change(starsField, { target: { value: "5" } });
+        fireEvent.change(starsField, { target: { value: 5 } });
         fireEvent.change(commentsField, { target: { value: 'great!' } });
         fireEvent.change(dateReviewedField, { target: { value: '2022-02-02T00:00' } });
         
@@ -104,7 +105,7 @@ describe("MenuItemReviewCreatePage tests", () => {
             "dateReviewed": "2022-02-02T00:00"
         });
 
-        expect(mockToast).toBeCalledWith("New menuItemReivew Created - itemId: 17 reviewerEmail: test@test.com");
+        expect(mockToast).toBeCalledWith("New menuItemReivew Created - id: 17 itemId: 1 reviewerEmail: test@test.com");
         expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 
