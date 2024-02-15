@@ -82,13 +82,13 @@ describe("MenuItemReviewCreatePage tests", () => {
         const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
         const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
-        fireEvent.change(itemIdField, { target: { value: '17' } });
+        fireEvent.change(itemIdField, { target: { value: 17 } });
         fireEvent.change(reviewerEmailField, { target: { value: 'test@test.com' } });
-        fireEvent.change(starsField, { target: { value: '5' } });
+        fireEvent.change(starsField, { target: { value: 5 } });
         fireEvent.change(commentsField, { target: { value: 'great!' } });
         fireEvent.change(dateReviewedField, { target: { value: '2022-02-02T00:00' } });
         
-
+        
         expect(submitButton).toBeInTheDocument();
 
         fireEvent.click(submitButton);
