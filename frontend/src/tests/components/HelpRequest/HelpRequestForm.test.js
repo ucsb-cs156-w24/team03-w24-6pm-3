@@ -105,7 +105,6 @@ describe("HelpRequestForm tests", () => {
         const tableOrBreakoutRoomField = screen.getByTestId("HelpRequestForm-tableOrBreakoutRoom");
         const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
         const explanationField = screen.getByTestId("HelpRequestForm-explanation");
-        const solvedField = screen.getByTestId("HelpRequestForm-solved");
 
         const submitButton = screen.getByTestId("HelpRequestForm-submit");
 
