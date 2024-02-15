@@ -105,7 +105,7 @@ describe("MenuItemReviewCreatePage tests", () => {
             "dateReviewed": "2022-02-02T00:00"
         });
 
-        expect(mockToast).toBeCalledWith("New menuItemReivew Created - id: 17 itemId: 1 reviewerEmail: test@test.com");
+        expect(mockToast).toBeCalledWith("New menuItemReview Created - id: 17 itemId: 1 reviewerEmail: test@test.com");
         expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 
