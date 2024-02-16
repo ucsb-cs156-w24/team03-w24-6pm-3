@@ -43,7 +43,7 @@ export default function MenuItemReviewEditPage({storybook=false}) {
   const mutation = useBackendMutation(
     objectToAxiosPutParams,
     { onSuccess },
-    
+    // Stryker disable next-line all : hard to set up test for caching
     [`/api/menuitemreviews?id=${id}`]
   );
 
