@@ -8,7 +8,6 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import UCSBDiningCommonsMenuItemIndexPageStories from "stories/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage.stories";
 
 const mockToast = jest.fn();
 jest.mock('react-toastify', () => {
