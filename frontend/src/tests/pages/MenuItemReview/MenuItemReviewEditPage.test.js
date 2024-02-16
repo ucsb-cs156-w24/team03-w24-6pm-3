@@ -91,7 +91,7 @@ describe("MenuItemReviewEditPage tests", () => {
                 comments: "its meh"
             });
         });
-
+        
         const queryClient = new QueryClient();
         test("renders without crashing", () => {
             render(
@@ -171,7 +171,7 @@ describe("MenuItemReviewEditPage tests", () => {
 
             await waitFor(() => expect(mockToast).toBeCalled());
             expect(mockToast).toBeCalledWith("menuItemReview Updated - id: 17 itemId: 1 reviewerEmail: test@ucsb.edu");
-            expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
+            expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreviews" });
 
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ id: 17 });
