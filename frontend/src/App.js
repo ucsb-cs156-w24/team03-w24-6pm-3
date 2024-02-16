@@ -18,6 +18,9 @@ import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewInd
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
+import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganizationsIndexPage";
+import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
+import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -92,6 +95,19 @@ function App() {
             <Route exact path="/helprequest/edit/:id" element={<HelpRequestEditPage />} />
             <Route exact path="/helprequest/create" element={<HelpRequestCreatePage />} />
           </>
+
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/ucsborganization" element={<UCSBOrganizationsIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/ucsborganization/edit/:id" element={<UCSBOrganizationsEditPage />} />
+              <Route exact path="/ucsborganization/create" element={<UCSBOrganizationsCreatePage />} />
+            </>
           )
         }
       </Routes>
