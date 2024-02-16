@@ -3,9 +3,9 @@ import UCSBDiningCommonsMenuItemForm from "main/components/UCSBDiningCommonsMenu
 import { Navigate } from 'react-router-dom'
 import { useBackendMutation } from "main/utils/useBackend";
 import { toast } from "react-toastify";
-import UCSBDiningCommonsMenuItemFormStories from "stories/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm.stories";
+// import UCSBDiningCommonsMenuItemFormStories from "stories/components/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemForm.stories";
 
-export default function UCSBDiningCommansMenuItemCreatePage({storybook=false}) {
+export default function UCSBDiningCommonsMenuItemCreatePage({storybook=false}) {
 
   const objectToAxiosParams = (ucsbDiningCommonsMenuItem) => ({
     url: "/api/ucsbdiningcommonsmenuitem/post",
@@ -17,8 +17,8 @@ export default function UCSBDiningCommansMenuItemCreatePage({storybook=false}) {
     }
   });
 
-  const onSuccess = (ucsbDate) => {
-    toast(`New UCSBDiningCommansMenuItem Created - id: ${ucsbDiningCommonsMenuItem.id} name: ${ucsbDiningCommonsMenuItem.name}`);
+  const onSuccess = (ucsbDiningCommonsMenuItem) => {
+    toast(`New UCSBDiningCommonsMenuItem Created - id: ${ucsbDiningCommonsMenuItem.id} name: ${ucsbDiningCommonsMenuItem.name}`);
   }
 
   const mutation = useBackendMutation(
@@ -35,13 +35,13 @@ export default function UCSBDiningCommansMenuItemCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/ucsbdates" />
+    return <Navigate to="/ucsbdiningcommonsmenuitem" />
   }
 
   return (
     <BasicLayout>
       <div className="pt-2">
-        <h1>Create New UCSBDiningCommansMenuItem</h1>
+        <h1>Create New UCSBDiningCommonsMenuItem</h1>
 
         <UCSBDiningCommonsMenuItemForm submitAction={onSubmit} />
 
