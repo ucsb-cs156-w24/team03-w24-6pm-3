@@ -3,8 +3,8 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import { rest } from "msw";
 
-import UCSBDiningCommonsMenuItemEditPage from 'main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage';
-import {ucsbDiningCommonsMenuItemFixtures} from 'fixtures/ucsbDiningCommonsMenuItemFixtures';
+import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
+import { ucsbDiningCommonsMenuItemFixtures } from 'fixtures/ucsbDiningCommonsMenuItemFixtures';
 
 export default {
     title: 'pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage',
@@ -23,7 +23,7 @@ Default.parameters = {
             return res(ctx.json(systemInfoFixtures.showingNeither));
         }),
         rest.get('/api/ucsbdiningcommonsmenuitem', (_req, res, ctx) => {
-            return res(ctx.json(ucsbDiningCommonsMenuItemFixtures.threeItems[0]));
+            return res(ctx.json(ucsbDiningCommonsMenuItemFixtures.threeRestaurants[0]));
         }),
         rest.put('/api/ucsbdiningcommonsmenuitem', async (req, res, ctx) => {
             var reqBody = await req.text();
