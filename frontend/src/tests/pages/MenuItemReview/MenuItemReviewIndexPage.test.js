@@ -146,6 +146,8 @@ describe("MenuItemReviewIndexPage tests", () => {
         // act
         fireEvent.click(deleteButton);
 
+        
+
         // assert
         await waitFor(() => { expect(mockToast).toBeCalledWith("MenuItemReview with id 1 was deleted") });
 
