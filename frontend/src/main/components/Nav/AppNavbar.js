@@ -1,7 +1,7 @@
+import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost";
+import { hasRole } from "main/utils/currentUser";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { hasRole } from "main/utils/currentUser";
-import AppNavbarLocalhost from "main/components/Nav/AppNavbarLocalhost"
 
 export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUrl = window.location.href }) {
   return (
@@ -58,6 +58,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   <Nav.Link as={Link} to="/ucsbdates">UCSB Dates</Nav.Link>
                   <Nav.Link as={Link} to="/placeholder">Placeholder</Nav.Link>
                   <Nav.Link as={Link} to="/helprequest">HelpRequest</Nav.Link>
+                  <Nav.Link as={Link} to="/menuitemreview">MenuItemReview</Nav.Link>
                 </>
               )
             }
