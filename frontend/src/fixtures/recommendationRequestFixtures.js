@@ -29,7 +29,7 @@ const recommendationRequestFixtures = {
              "requesterEmail": "ldelplaya@ucsb.edu",
              "professorEmail": "phtcon@ucsb.edu",
              "explanation": "PhD CS Stanford",
-             "dateRequested": "2022-05-2T12:00:00",
+             "dateRequested": "2022-05-20T12:00:00",
              "dateNeeded": "2022-11-15T12:00:00",
              "done": false  
         },
