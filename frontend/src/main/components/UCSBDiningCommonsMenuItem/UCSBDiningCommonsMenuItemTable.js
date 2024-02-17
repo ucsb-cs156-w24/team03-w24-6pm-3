@@ -11,7 +11,9 @@ export default function UCSBDining({ items, currentUser }) {
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
+
         navigate(`/UCSBDiningCommonsMenuItem/edit/${cell.row.values.id}`)
+
     }
 
     // Stryker disable all : hard to test for query caching
