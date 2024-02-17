@@ -38,6 +38,10 @@ export default function UCSBOrganizationsCreatePage({storybook=false}) {
   if (isSuccess && !storybook) {
     return <Navigate to="/ucsborganization" />
   }
+
+
+export default function UCSBOrganizationsCreatePage() {
+
   // Stryker disable all : placeholder for future implementation
   return (
     <BasicLayout>
