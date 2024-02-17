@@ -148,6 +148,8 @@ describe("RecommendationRequestForm tests", () => {
 
         expect(screen.queryByText(/dateRequested must be in ISO format/)).not.toBeInTheDocument();
         expect(screen.queryByText(/dateNeeded must be in ISO format/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Requester email must be a valid email./)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Professor email must be a valid email./)).not.toBeInTheDocument();
 
     });
 
