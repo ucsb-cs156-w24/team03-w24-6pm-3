@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { useBackend } from 'main/utils/useBackend';
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
@@ -42,5 +43,3 @@ export default function UCSBOrganizationsIndexPage() {
     )
   }
   
-
-export default function UCSBOrganizationsIndexPage() {
