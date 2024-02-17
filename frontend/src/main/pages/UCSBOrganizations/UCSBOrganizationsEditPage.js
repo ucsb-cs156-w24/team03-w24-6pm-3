@@ -74,7 +74,3 @@ export default function UCSBOrganizationsEditPage({storybook=false}) {
     )
 
 }
-
-export default function UCSBOrganizationsEditPage() {
-
-
