@@ -1,5 +1,5 @@
+import { onDeleteSuccess, cellToAxiosParamsDelete } from "main/utils/helpRequestUtils";
 import mockConsole from "jest-mock-console";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/menuItemReviewUtils";
 
 const mockToast = jest.fn();
 jest.mock('react-toastify', () => {
@@ -11,7 +11,7 @@ jest.mock('react-toastify', () => {
     };
 });
 
-describe("menuItemReviewUtils", () => {
+describe("helpRequestUtils", () => {
 
     describe("onDeleteSuccess", () => {
 
@@ -43,11 +43,18 @@ describe("menuItemReviewUtils", () => {
 
             // assert
             expect(result).toEqual({
-                url: "/api/menuitemreviews",
+                url: "/api/helprequest",
                 method: "DELETE",
-                params: { id: 17 }
+                params: {
+                    id: cell.row.values.id
+                }
             });
         });
 
     });
 });
+
+
+
+
+
