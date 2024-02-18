@@ -21,6 +21,9 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
    // Stryker disable next-line Regex
    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
+   // Stryker disable next-line Regex
+   const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+   
    const testIdPrefix = "RecommendationRequestForm";
 
    return (
@@ -50,11 +53,12 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.requesterEmail)}
                    {...register("requesterEmail", {
-                       required: "RequesterEmail is required."
+                       required: true, pattern: email_regex
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.requesterEmail?.message}
+                    {errors.requesterEmail && 'RequesterEmail is required. '}
+                    {errors.requesterEmail?.type === 'pattern' && 'Requester email must be a valid email.'}
                </Form.Control.Feedback>
            </Form.Group>
 
@@ -67,11 +71,12 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.professorEmail)}
                    {...register("professorEmail", {
-                       required: "ProfessorEmail is required."
+                    required: true, pattern: email_regex
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.professorEmail?.message}
+                    {errors.professorEmail && 'ProfessorEmail is required. '}
+                    {errors.professorEmail?.type === 'pattern' && 'Professor email must be a valid email.'}
                </Form.Control.Feedback>
            </Form.Group>
 
@@ -84,11 +89,11 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                    type="text"
                    isInvalid={Boolean(errors.explanantion)}
                    {...register("explanation", {
-                       required: "Explanation is required."
+                       required: true
                    })}
                />
                <Form.Control.Feedback type="invalid">
-                   {errors.explanation?.message}
+                    {errors.explanation && 'Explanation is required.'}
                </Form.Control.Feedback>
            </Form.Group>
 
