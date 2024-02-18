@@ -1,16 +1,19 @@
+import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
-import { hasRole } from "main/utils/currentUser";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/menuItemReviewUtils";
 import { useBackendMutation } from "main/utils/useBackend";
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDiningCommonsMenuItemUtils"
 import { useNavigate } from "react-router-dom";
+import { hasRole } from "main/utils/currentUser";
 
-export default function MenuItemReviewTable({ reviews, currentUser }) {
+export default function UCSBDining({ items, currentUser }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-        navigate(`/menuitemreview/edit/${cell.row.values.id}`)
+
+        navigate(`/UCSBDiningCommonsMenuItem/edit/${cell.row.values.id}`)
+
     }
 
     // Stryker disable all : hard to test for query caching
@@ -18,7 +21,7 @@ export default function MenuItemReviewTable({ reviews, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/menuitemreviews/all"]
+        ["/api/UCSBDiningCommonsMenuItem/all"]
     );
     // Stryker restore all 
 
@@ -32,35 +35,27 @@ export default function MenuItemReviewTable({ reviews, currentUser }) {
             accessor: 'id', // accessor is the "key" in the data
         },
         {
-            Header: 'ItemID',
-            accessor: 'itemId',
+            Header: 'Dining Commons Code',
+            accessor: 'diningCommonsCode',
         },
         {
-            Header: 'ReviewerEmail',
-            accessor: 'reviewerEmail',
+            Header: 'Name',
+            accessor: 'name',
         },
         {
-            Header: 'Stars',
-            accessor: 'stars',
-        },
-        {
-            Header: 'DateReviewed',
-            accessor: 'dateReviewed',
-        },
-        {
-            Header: 'Comments',
-            accessor: 'comments',
+            Header: 'Station',
+            accessor: 'station',
         }
     ];
 
     if (hasRole(currentUser, "ROLE_ADMIN")) {
-        columns.push(ButtonColumn("Edit", "primary", editCallback, "MenuItemReviewTable"));
-        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "MenuItemReviewTable"));
+        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBDiningCommonsMenuItemTable"));
+        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBDiningCommonsMenuItemTable"));
     } 
 
     return <OurTable
-        data={reviews}
+        data={items}
         columns={columns}
-        testid={"MenuItemReviewTable"}
+        testid={"UCSBDiningCommonsMenuItemTable"}
     />;
 };
