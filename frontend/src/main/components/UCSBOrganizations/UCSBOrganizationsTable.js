@@ -2,18 +2,16 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDiningCommonsMenuItemUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBOrganizationsUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDining({ items, currentUser }) {
+export default function UCSBOrganizationsTable({ organizations, currentUser }) {
 
     const navigate = useNavigate();
 
     const editCallback = (cell) => {
-
-        navigate(`/UCSBDiningCommonsMenuItem/edit/${cell.row.values.id}`)
-
+        navigate(`/ucsborganization/edit/${cell.row.values.orgCode}`)
     }
 
     // Stryker disable all : hard to test for query caching
@@ -21,41 +19,41 @@ export default function UCSBDining({ items, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/UCSBDiningCommonsMenuItem/all"]
+        ["/api/ucsborganization/all"]
     );
     // Stryker restore all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
-
     const columns = [
         {
-            Header: 'id',
-            accessor: 'id', // accessor is the "key" in the data
+            Header: 'orgCode',
+            accessor: 'orgCode', // accessor is the "key" in the data
         },
         {
-            Header: 'Dining Commons Code',
-            accessor: 'diningCommonsCode',
+            Header: 'OrgTranslationShort',
+            accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'OrgTranslation',
+            accessor: 'orgTranslation',
         },
         {
-            Header: 'Station',
-            accessor: 'station',
+            Header: 'Inactive',
+            id: 'inactive',
+            accessor: row => String(row.inactive)
         }
     ];
 
     if (hasRole(currentUser, "ROLE_ADMIN")) {
-        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBDiningCommonsMenuItemTable"));
-        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBDiningCommonsMenuItemTable"));
+        columns.push(ButtonColumn("Edit", "primary", editCallback, "UCSBOrganizationsTable"));
+        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "UCSBOrganizationsTable"));
     } 
 
     return <OurTable
-        data={items}
+        data={organizations}
         columns={columns}
-        testid={"UCSBDiningCommonsMenuItemTable"}
+        testid={"UCSBOrganizationsTable"}
     />;
 };
