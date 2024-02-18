@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-w24/team03-w24-6pm-3
 owner: ucsb-cs156-w24
 repo_name: team03-w24-6pm-3
-pull_requests: [{"author":{"id":"U_kgDOB3CMjQ","is_bot":false,"login":"jenniferlopez17","name":""},"headRefName":"Jennifer-RecommendationRequest-index","number":103,"title":"JL - Index Page for RecommendationRequest plus tests and stories","url":"https://github.com/ucsb-cs156-w24/team03-w24-6pm-3/pull/103"}]
+pull_requests: [{"author":{"id":"U_kgDOBh72PQ","is_bot":false,"login":"andyjin1","name":"Andy Jin"},"headRefName":"revert-92-TP-UCSBOrganizations-EditPage","number":106,"title":"Revert \"TP - Edit component for UCSBOrganizations\"","url":"https://github.com/ucsb-cs156-w24/team03-w24-6pm-3/pull/106"},{"author":{"id":"U_kgDOB3CMjQ","is_bot":false,"login":"jenniferlopez17","name":""},"headRefName":"Jennifer-RecommendationRequest-index","number":103,"title":"JL - Index Page for RecommendationRequest plus tests and stories","url":"https://github.com/ucsb-cs156-w24/team03-w24-6pm-3/pull/103"}]
