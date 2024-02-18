@@ -152,6 +152,9 @@ function App() {
             <Route exact path="/helprequest/edit/:id" element={<HelpRequestEditPage />} />
             <Route exact path="/helprequest/create" element={<HelpRequestCreatePage />} />
           </>
+          )
+        }
+        {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/ucsborganization" element={<UCSBOrganizationsIndexPage />} />
