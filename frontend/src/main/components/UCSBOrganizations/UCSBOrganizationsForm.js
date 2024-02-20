@@ -47,9 +47,6 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
                             disabled
                             
                         />
-                        <Form.Control.Feedback type="invalid">
-                            {errors.orgCode && 'orgCode is required. '}
-                        </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             )}
