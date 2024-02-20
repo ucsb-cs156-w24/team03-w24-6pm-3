@@ -16,6 +16,7 @@ Deployments:
 | RecommendationRequest     | Jennifer L   | jenniferlopez17 |
 | MenuItemReview            | Andy J       | andyjin1        |
 | HelpRequest               | Jennie W     | jenniebn        |
+| Articles                  | /            | /               |
 
 Remember though, that in spite of these initial  assignments, it is still
 a team project.  Please help other team members to finish their work
