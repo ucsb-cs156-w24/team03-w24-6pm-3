@@ -1,6 +1,6 @@
-import { Button, Form, Row, Col } from 'react-bootstrap';
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Button, Col, Form, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
@@ -31,7 +31,7 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
 
 
             <Row>
-            
+            {initialContents && (
                 <Col>
                     <Form.Group className="mb-3" >
                         <Form.Label htmlFor="orgCode">orgCode</Form.Label>
@@ -43,7 +43,8 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
                             {...register("orgCode",{
                                 required: "orgCode is required."
                             })}
-                            //value={initialContents.orgCode}
+                            value={initialContents.orgCode}
+                            disabled
                             
                         />
                         <Form.Control.Feedback type="invalid">
@@ -51,7 +52,7 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
-                
+            )}
 
                 <Col>
                     <Form.Group className="mb-3" >
