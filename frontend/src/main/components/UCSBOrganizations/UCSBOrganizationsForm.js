@@ -40,9 +40,7 @@ function UCSBOrganizationsForm({ initialContents, submitAction, buttonLabel = "C
                             id="orgCode"
                             type="text"
                             isInvalid={Boolean(errors.orgTranslationShort)}
-                            {...register("orgCode",{
-                                required: "orgCode is required."
-                            })}
+                            {...register("orgCode")}
                             value={initialContents.orgCode}
                             disabled
                             
