@@ -1,12 +1,12 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
-import axios from "axios";
-import AxiosMockAdapter from "axios-mock-adapter";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import axios from "axios";
+import AxiosMockAdapter from "axios-mock-adapter";
 
 const mockToast = jest.fn();
 jest.mock('react-toastify', () => {
@@ -73,8 +73,11 @@ describe("UCSBOrganizationCreatePage tests", () => {
         )
 
         await waitFor(() => {
-            expect(screen.getByLabelText("orgTranslationShort")).toBeInTheDocument();
+            expect(screen.getByLabelText("orgCode")).toBeInTheDocument();
         });
+
+        const orgCodeInput = screen.getByLabelText("orgCode");
+        expect(orgCodeInput).toBeInTheDocument();
 
         const orgTranslationShortInput = screen.getByLabelText("orgTranslationShort");
         expect(orgTranslationShortInput).toBeInTheDocument();
@@ -88,7 +91,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         const createButton = screen.getByText("Create");
         expect(createButton).toBeInTheDocument();
 
-
+        fireEvent.change(orgCodeInput, { target: { value: 'ZPR' } })
         fireEvent.change(orgTranslationShortInput, { target: { value: 'ZETA PHI RHO' } })
         fireEvent.change(orgTranslationInput, { target: { value: 'ZETA PHI RHO' } })
         fireEvent.change(inactiveInput, { target: { value: false } })
@@ -97,6 +100,7 @@ describe("UCSBOrganizationCreatePage tests", () => {
         await waitFor(() => expect(axiosMock.history.post.length).toBe(1));
 
         expect(axiosMock.history.post[0].params).toEqual({
+            orgCode: "ZPR",
             orgTranslationShort: "ZETA PHI RHO",
             orgTranslation: "ZETA PHI RHO",
             inactive: "false"

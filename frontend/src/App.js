@@ -11,28 +11,28 @@ import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
 import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 
+import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import RecommendationRequestCreatePage from "main/pages/RecommendationRequest/RecommendationRequestCreatePage";
 import RecommendationRequestEditPage from "main/pages/RecommendationRequest/RecommendationRequestEditPage";
-import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 
+import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
-import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 
 import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
 import MenuItemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
 import MenuItemReviewIndexPage from "main/pages/MenuItemReview/MenuItemReviewIndexPage";
 
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
-import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 
+import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
 import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
 import UCSBDiningCommonsMenuItemEditPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemEditPage";
-import UCSBDiningCommonsMenuItemIndexPage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemIndexPage";
+import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganizationsIndexPage";
 import UCSBOrganizationsCreatePage from "main/pages/UCSBOrganizations/UCSBOrganizationsCreatePage";
 import UCSBOrganizationsEditPage from "main/pages/UCSBOrganizations/UCSBOrganizationsEditPage";
-import UCSBOrganizationsIndexPage from "main/pages/UCSBOrganizations/UCSBOrganizationsIndexPage";
 
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
@@ -164,7 +164,7 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsborganization/edit/:orgCode" element={<UCSBOrganizationsEditPage />} />
+              <Route exact path="/ucsborganization/edit/:id" element={<UCSBOrganizationsEditPage />} />
               <Route exact path="/ucsborganization/create" element={<UCSBOrganizationsCreatePage />} />
             </>
           )

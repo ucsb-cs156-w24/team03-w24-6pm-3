@@ -1,6 +1,6 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { ucsbOrganizationsFixtures } from "fixtures/ucsbOrganizationsFixtures";
+import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import UCSBOrganizationsForm from "main/components/UCSBOrganizations/UCSBOrganizationsForm";
+import { ucsbOrganizationsFixtures } from "fixtures/ucsbOrganizationsFixtures";
 import { BrowserRouter as Router } from "react-router-dom";
 
 const mockedNavigate = jest.fn();
@@ -20,7 +20,7 @@ describe("UCSBOrganizationsForm tests", () => {
                 <UCSBOrganizationsForm />
             </Router>
         );
-        await screen.findByText(/orgTranslationShort/);
+        await screen.findByText(/orgCode/);
         await screen.findByText(/Create/);
     });
 
@@ -73,7 +73,8 @@ describe("UCSBOrganizationsForm tests", () => {
 
         fireEvent.click(submitButton);
 
-        await screen.findByText(/orgTranslationShort is required./);
+        await screen.findByText(/orgCode is required./);
+        expect(screen.getByText(/orgTranslationShort is required./)).toBeInTheDocument();
         expect(screen.getByText(/orgTranslation is required./)).toBeInTheDocument();
         expect(screen.getByText(/inactive is required./)).toBeInTheDocument();
 
@@ -89,12 +90,14 @@ describe("UCSBOrganizationsForm tests", () => {
                 <UCSBOrganizationsForm submitAction={mockSubmitAction} />
             </Router>
         );
-        await screen.findByTestId("UCSBOrganizationsForm-orgTranslationShort");
+        await screen.findByTestId("UCSBOrganizationsForm-orgCode");
+        const orgCodeField = screen.getByTestId("UCSBOrganizationsForm-orgCode");
         const orgTranslationShortField = screen.getByTestId("UCSBOrganizationsForm-orgTranslationShort");
         const orgTranslationField = screen.getByTestId("UCSBOrganizationsForm-orgTranslation");
         const inactiveField = screen.getByTestId("UCSBOrganizationsForm-inactive");
         const submitButton = screen.getByTestId("UCSBOrganizationsForm-submit");
 
+        fireEvent.change(orgCodeField, { target: { value: 'ZPR' } });
         fireEvent.change(orgTranslationShortField, { target: { value: 'ZETA PHI RHO' } });
         fireEvent.change(orgTranslationField, { target: { value: 'ZETA PHI RHO' } });
         fireEvent.change(inactiveField, { target: { value: false } });
