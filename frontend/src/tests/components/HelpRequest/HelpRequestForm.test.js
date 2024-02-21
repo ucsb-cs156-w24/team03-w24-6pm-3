@@ -87,7 +87,7 @@ describe("HelpRequestForm tests", () => {
         expect(screen.getByText(/RequestTime is required./)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
     });
-
+    
 
     test("No Error messsages on good input", async () => {
 
@@ -118,7 +118,8 @@ describe("HelpRequestForm tests", () => {
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
         expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
-
+        expect(screen.queryByText(/TeamId must be in the correct format, e.g. s22-5pm-3/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu/)).not.toBeInTheDocument();
     });
 
 
@@ -138,24 +139,26 @@ describe("HelpRequestForm tests", () => {
         await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(-1));
     });
 
-    test("that the correct validations are performed", async () => {
-        render(
-            <QueryClientProvider client={queryClient}>
-                <Router>
-                    <HelpRequestForm />
-                </Router>
-            </QueryClientProvider>
-        );
+    test("Correct Error messsages on bad input", async () => {
 
-        expect(await screen.findByText(/Create/)).toBeInTheDocument();
-        const submitButton = screen.getByText(/Create/);
+        render(
+            <Router  >
+                <HelpRequestForm />
+            </Router>
+        );
+        await screen.findByTestId("HelpRequestForm-requesterEmail");
+        const requesterEmailField = screen.getByTestId("HelpRequestForm-requesterEmail");
+        const teamIdField = screen.getByTestId("HelpRequestForm-teamId");
+        const requestTimeField = screen.getByTestId("HelpRequestForm-requestTime");
+
+        const submitButton = screen.getByTestId("HelpRequestForm-submit");
+
+        fireEvent.change(teamIdField, { target: { value: 's22-5pm-' } });
+        fireEvent.change(requesterEmailField, { target: { value: 'bad-input' } });
+        fireEvent.change(requestTimeField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        expect(await screen.findByText(/RequesterEmail is required/)).toBeInTheDocument();
-        expect(await screen.findByText(/TeamId is required/)).toBeInTheDocument();
-        expect(await screen.findByText(/TableOrBreakoutRoom is required/)).toBeInTheDocument();
-        expect(await screen.findByText(/RequestTime is required/)).toBeInTheDocument();
-        expect(await screen.findByText(/Explanation is required/)).toBeInTheDocument();
+        await screen.findByText(/RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu/);
+        expect(screen.getByText(/TeamId must be in the correct format, e.g. s22-5pm-3/)).toBeInTheDocument();
     });
-
 });
