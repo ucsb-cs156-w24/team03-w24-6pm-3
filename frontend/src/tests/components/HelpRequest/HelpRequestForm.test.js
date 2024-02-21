@@ -118,7 +118,8 @@ describe("HelpRequestForm tests", () => {
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
         expect(screen.queryByText(/requestTime must be in ISO format/)).not.toBeInTheDocument();
-
+        expect(screen.queryByText(/TeamId must be in the correct format, e.g. s22-5pm-3/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu/)).not.toBeInTheDocument();
     });
 
 
