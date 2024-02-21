@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -220,7 +220,9 @@
 <a name='L155'></a><a href='#L155'>155</a>
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
-<a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L158'></a><a href='#L158'>158</a>
+<a name='L159'></a><a href='#L159'>159</a>
+<a name='L160'></a><a href='#L160'>160</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -244,10 +246,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -400,6 +404,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 &nbsp;
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    // Stryker disable next-line Regex
+    const email_regex = /[\w.]+@([\w]+\.)+[\w-]{2,4}/i;
+    // Stryker disable next-line Regex
+    const teamId_regex = /[smfw]\d\d-([123456789]|10|11|12)(am|pm)-[1234]$/;
 &nbsp;
 &nbsp;
     return (
@@ -421,38 +429,36 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             )}
  
  
-            &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-requesterEmail"}
-                    id="requesterEmail"
-                    type="text"
-                    isInvalid={Boolean(errors.requesterEmail)}
-                    {...register("requesterEmail", {
-                        required: "RequesterEmail is required."
-                    })}
-                /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.requesterEmail?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
+                 &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid={testIdPrefix + "-requesterEmail"}
+                            id="requesterEmail"
+                            type="text"
+                            isInvalid={Boolean(errors.requesterEmail)}
+                            {...register("requesterEmail", { required: 'RequesterEmail is required.', pattern: email_regex })}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                        {errors.requesterEmail?.message}
+                        {errors.requesterEmail?.type === 'pattern' &amp;&amp; 'RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu'}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
  
  
             &lt;Form.Group className="mb-3" &gt;
-                &lt;Form.Label htmlFor="teamId"&gt;Team Id&lt;/Form.Label&gt;
-                &lt;Form.Control
-                    data-testid={testIdPrefix + "-teamId"}
-                    id="teamId"
-                    type="text"
-                    isInvalid={Boolean(errors.teamId)}
-                    {...register("teamId", {
-                        required: "TeamId is required."
-                    })}
-                /&gt;
-                &lt;Form.Control.Feedback type="invalid"&gt;
-                    {errors.teamId?.message}
-                &lt;/Form.Control.Feedback&gt;
-            &lt;/Form.Group&gt;
+                        &lt;Form.Label htmlFor="teamId"&gt;Team Id&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid={testIdPrefix + "-teamId"}
+                            id="teamId"
+                            type="text"
+                            isInvalid={Boolean(errors.teamId)}
+                            {...register("teamId", { required: "TeamId is required.", pattern: teamId_regex })}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                            {errors.teamId?.message}
+                            {errors.teamId?.type === 'pattern' &amp;&amp; 'TeamId must be in the correct format, e.g. s22-5pm-3'}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
 &nbsp;
             &lt;Form.Group className="mb-3" &gt;
                 &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;Table Or Breakout Room&lt;/Form.Label&gt;
@@ -541,7 +547,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Feb 19 2024 23:42:49 GMT-0800 (Pacific Standard Time)
+                at Tue Feb 20 2024 21:57:50 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
