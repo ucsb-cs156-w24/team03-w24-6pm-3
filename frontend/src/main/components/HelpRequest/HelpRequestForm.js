@@ -21,11 +21,10 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    // Stryker disable next-line all
+    // Stryker disable next-line Regex
     const email_regex = /[\w.]+@([\w]+\.)+[\w-]{2,4}/i;
-    // Stryker disable next-line all
+    // Stryker disable next-line Regex
     const teamId_regex = /[smfw]\d\d-([123456789]|10|11|12)(am|pm)-[1234]$/;
-    // Stryker disable next-line all
 
 
     return (
@@ -54,11 +53,11 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="requesterEmail"
                             type="text"
                             isInvalid={Boolean(errors.requesterEmail)}
-                            {...register("requesterEmail", { required: true, pattern: email_regex })}
+                            {...register("requesterEmail", { required: 'RequesterEmail is required.', pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.requesterEmail && 'RequesterEmail is required.'}
-                            {errors.requesterEmail?.type === 'pattern' && 'RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu'}
+                        {errors.requesterEmail?.message}
+                        {errors.requesterEmail?.type === 'pattern' && 'RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu'}
                         </Form.Control.Feedback>
                     </Form.Group>
  
@@ -73,7 +72,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             {...register("teamId", { required: "TeamId is required.", pattern: teamId_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.teamId && 'TeamId is required.'}
+                            {errors.teamId?.message}
                             {errors.teamId?.type === 'pattern' && 'TeamId must be in the correct format, e.g. s22-5pm-3'}
                         </Form.Control.Feedback>
                     </Form.Group>
